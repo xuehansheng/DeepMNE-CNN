@@ -40,9 +40,6 @@ flags.DEFINE_float('Dropout', 0.5, 'Number of Dropout')
 flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft device placement")
 flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops on devices")
 flags.DEFINE_integer("num_checkpoints", 5, "Number of checkpoints to store (default: 5)")
-# level1: ('Parameters:', 'Adade', 0.005, 64, 300, 0.5, 0.1) [7, 5]
-# level2: ('Parameters:', 'Adade', 0.01, 64, 300, 0.5, 0.0) [7, 5]
-# level3: ('Parameters:', 'Adade', 0.01, 64, 400, 0.7, 0.0) [7, 5]
 
 
 # Load embeding and annotaion
