@@ -81,9 +81,6 @@ class SemiAutoEncoder:
 		y_true = X
 		# Define loss and optimizer, minimize the squared error
 		loss = tf.reduce_mean(tf.pow(y_true - y_pred, 2))
-		# loss = tf.reduce_sum(tf.pow(y_true - y_pred, 2))
-		# loss = tf.losses.mean_squared_error(y_true, y_pred)
-		# loss = -tf.reduce_sum(y_true*tf.log(tf.nn.softmax(y_pred)))
 
 		constraints = tf.placeholder("float", [None, self.batch_size])
 		constraints_ = tf.placeholder("float", [None, self.batch_size])
@@ -127,8 +124,6 @@ class BioCNN(object):
 	def __init__(self, num_input, num_classes, embeding_size, feature_size, filter_sizes, num_filters, l2_reg_lambda):
 		# num_input:6400, num_classes=17, embeding_size:500, feature_size=6
 		# Placeholders for input, output and dropout
-		# self.input_x = tf.placeholder(tf.float32, [None, feature_size, embeding_size, 1], name="input_x")
-		# self.input_x = tf.placeholder(tf.float32, [None, feature_size, embeding_size], name="input_x")
 		self.input_x = tf.placeholder(tf.float32, [None, embeding_size, feature_size], name="input_x")
 		self.input_y = tf.placeholder(tf.float32, [None, num_classes], name="input_y")
 		self.dropout_keep_prob = tf.placeholder(tf.float32, name="dropout_keep_prob")
@@ -153,21 +148,10 @@ class BioCNN(object):
 			h = tf.nn.bias_add(conv, b)
 			h = self.batch_normalization_layer(h)
 			h = tf.nn.relu(h, name="relu")
-			# h = tf.nn.dropout(h, 0.5, name="dropout")
-			# print h.shape
 			print(h.shape)
-			# h = tf.transpose(h, [0, 1, 3, 2])
-			# h = tf.nn.max_pool(h, ksize=[1,2,1,1], strides=[1,2,1,1], padding="VALID", name="pool")
-			# print h.shape
 
 			h_outputs.append(h)
-			# h_outputs.append(pooled)
 
-		# x = tf.transpose(pooled, [0, 1, 3, 2])
-		# with tf.name_scope("ReshapeLayer"):
-		# 	vec_dim = x.get_shape()[1].value * x.get_shape()[2].value
-		# 	x = tf.reshape(x, [-1, vec_dim])
-		# print x.shape
 		outputs = tf.concat(h_outputs, 1)
 		# print outputs.shape
 		print(outputs.shape)
