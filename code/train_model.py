@@ -20,7 +20,6 @@ FLAGS = flags.FLAGS
 flags.DEFINE_string('org', 'yeast', 'Dataset string')  # 'yeast', 'human'
 flags.DEFINE_integer('net_dims', 6400, 'Dimensional number of input networks')
 flags.DEFINE_integer('net_nums', 6, 'Number of input networks')
-# flags.DEFINE_string('model', 'gcn', 'Model string.')  # 'gcn', 'gcn_cheby', 'dense'
 flags.DEFINE_list('learning_rate', [0.5, 0.05, 0.05, 0.01], 'Initial learning rate')
 # flags.DEFINE_float('learning_rate', [0.1, 0.01, 0.01], 'Initial learning rate')
 flags.DEFINE_integer('batch_size', 128, 'Initial batch size')
